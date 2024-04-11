@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Calculator app</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+    *{
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    body{
+      transition: 0.3s;
+      font-family: "League Spartan", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+    }
+    .dark-mode{
+      background-color: hsl(222, 26%, 31%);
+      transition: 0.3s;
+      color: white;
+    }
+    .container{
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      margin: auto;
+    }
+    .dark button{
+      width: 100px;
+      height: 30px;
+      border-radius: 20px;
+      background-color: rgb(58, 54, 54);
+      color: white;
+    }
+    .clacultor{
+      display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    padding: 10px;
+    width: 415px;
+    flex-wrap: wrap;
+    }
+    .display{
+      margin: 1.4rem;
+    }
+    .display input{
+      width: 25rem;
+    height: 5rem;
+      text-align: right;
+      background-color: #181f32;
+      color: white;
+      font-size:4rem;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    .number button{
+      width: 71px;
+      height: 40px;
+      border-radius: 10px;
+      border: none;
+      background-color: #eae3db;
+      cursor: pointer;
+      font-size: 30px;
+      margin: 0.4rem;
+      box-shadow: 0px 4px fuchsia;
+    }
+    .number{
+      background-color: #252d44;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    .number :hover{
+      background-color: #ded5cb;
+      transition: 0.3s;
+    }
+    .rest{
+      width: 300px;
+      background-color: blueviolet;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="text">
+      <h2>Calc</h2>
+    </div>
+    <div class="dark">
+      <button onclick="theme()">theme</button>
+    </div>
+  </div>
+  <div class="clacultor">
+    <div class="display">
+        <input type="text" id="result" readonly>
+    </div>
+    <div class="number">
+      <button onclick="appendToDisplay('7')">7</button>
+      <button onclick="appendToDisplay('8')">8</button>
+      <button onclick="appendToDisplay('9')">9</button>
+      <button onclick="deleteLast()" style="background-color: #647299; color: white;">DEL</button>
+      <button onclick="appendToDisplay('4')">4</button>
+      <button onclick="appendToDisplay('5')">5</button>
+      <button onclick="appendToDisplay('6')">6</button>
+      <button onclick="appendToDisplay('+')">+</button>
+      <button onclick="appendToDisplay('1')">1</button>
+      <button onclick="appendToDisplay('2')">2</button>
+      <button onclick="appendToDisplay('3')">3</button>
+      <button onclick="appendToDisplay('-')">-</button>
+      <button onclick="appendToDisplay('.')">.</button>
+      <button onclick="appendToDisplay('0')">0</button>
+      <button onclick="appendToDisplay('/')">/</button>
+      <button onclick="appendToDisplay('*')">x</button>
+      <button onclick="reset()" style="width: 140px; background-color: #647299; color: white;">RESET</button>
+      <button onclick="calculate()" style="width: 140px; background-color: #d13f30; color: white;" >=</button>
+    </div>
+  </div>
+  <script>
+    function theme(){
+      var element= document.body;
+      element.classList.toggle("dark-mode")
+    }
+     let display = document.getElementById('result');
+
+    function appendToDisplay(value) {
+      display.value += value;
+    }
+
+    function deleteLast() {
+      display.value = display.value.slice(0, -1);
+    }
+
+    function reset() {
+      display.value = '';
+    }
+
+    function calculate() {
+      try {
+        display.value = eval(display.value);
+      } catch (error) {
+        display.value = 'Error';
+      }
+    }
+  </script>
+
+
+  
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div>
+</body>
+</html>
